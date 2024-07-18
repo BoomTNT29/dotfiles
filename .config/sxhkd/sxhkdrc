@@ -1,0 +1,7 @@
+# Increase brightness with Alt+Shift+Scroll Up
+super + shift + button4
+		~/Scripts/increase_brightness.sh
+
+# Decrease brightness with Alt+Shift+Scroll Down
+super + shift + button5
+		~/Scripts/decrease_brightness.sh
