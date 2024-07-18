@@ -1,0 +1,13 @@
+[user]
+	name = boom29
+	email = Gathik.Jindal@iiitb.ac.in
+[core]
+	autocrlf = true
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	cm = commit
+[credential]
+	helper = cache
+	helper = cache
