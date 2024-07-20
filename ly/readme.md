@@ -2,7 +2,7 @@ The config.ini goes into /etc/ly/
 
 To automatically change the splash text (remember?) / box title, I made a script and did the following steps to run the script automatically on start up:
 
- 1) I madea <name>.service file in /etc/systemd/system/ with the following content:
+ 1) I made a `<name>.service` file in `/etc/systemd/system/` with the following content:
  ```
 [Unit]
 Description=Update LY Splash Text
