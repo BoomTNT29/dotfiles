@@ -1,4 +1,4 @@
-The config.ini goes into /etc/ly/
+The `config.ini` goes into `/etc/ly/`
 
 To automatically change the splash text (remember?) / box title, I made a script and did the following steps to run the script automatically on start up:
 
