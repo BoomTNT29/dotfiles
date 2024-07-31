@@ -11,9 +11,11 @@ opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 
-opt.wrap = false
+-- line wraps
+opt.wrap = true
+opt.linebreak = true
 
---search settings
+-- search settings
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-senstive
 
