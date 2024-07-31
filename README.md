@@ -146,3 +146,9 @@ Now if you reboot your system, you will see the option for windows 11 too.
 You can delete the root and swap partitions directly from `diskmgmt`, but to delete the efi partition we need to take a few extra steps.
 
 Open `cmd` in administrator mode.
+    - type `diskpart`
+    - type `list disk` to list all the disks
+    - type `select disk <number>`
+    - `list partition` to list all the partitions
+    - `select partition <number>`
+    - `delete partition override` NOTE: THIS IS A DESTRUCTIVE OPERATION
