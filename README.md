@@ -152,3 +152,18 @@ Open `cmd` in administrator mode.
     - `list partition` to list all the partitions
     - `select partition <number>`
     - `delete partition override` NOTE: THIS IS A DESTRUCTIVE OPERATION
+
+# Enabling Secure-Boot
+
+Enter set-up mode, this is done by resetting all the keys related to secure boot.
+Then install `sbctl` and reinstall grub with `tpm` module:
+    - `grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --modules="tpm" --disable-shim-lock`
+    - `sudo pacman -S sbctl`
+
+Type `sbctl status` to see general status.
+Create your own custom secure boot keys using: `sbctl create-keys`
+Enroll those keys with Microsoft's keys: `sbctl enroll-keys -m`
+Type `sbctl status` again to verify that the above steps were successful.
+Type `sbctl verify` to see what files need signing, the type `sbctl sign -s /path/to/file` for all those files.
+
+Reboot and enjoy!
