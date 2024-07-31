@@ -7,16 +7,16 @@ Create a free partition that we will be using to run linux on, this partition wi
 Install the latest arch linux build from an official arch mirror and use `Rufus` to burn on an USB stick.
 
 Launch the UEFI Firmware:
-    - Turn `Secure Boot` off.
-    - Set the boot option to boot from the USB stick.
+- Turn `Secure Boot` off.
+- Set the boot option to boot from the USB stick.
 
 After booting up, select the `Arch Installation Medium`.
 
 After it finishes booting up, connect to wifi using `iwctl`. Here are the basic commands that we will be using:
-    - `device list` to list the devices
-    - `station <insert station here> get-networks` to list all the networks.
-    - `station <insert station here> connect <wifi network>` to connect to the network. (Incase of college wifi some extra steps might be required)
-    - `exit` to exit.
+- `device list` to list the devices
+- `station <insert station here> get-networks` to list all the networks.
+- `station <insert station here> connect <wifi network>` to connect to the network. (Incase of college wifi some extra steps might be required)
+- `exit` to exit.
 
 Sync the pacman database: `pacman -Sy`.
 Also install the archlinux-keyring package: `pacman -Sy archlinux-keyring`.
@@ -24,20 +24,20 @@ Also install the archlinux-keyring package: `pacman -Sy archlinux-keyring`.
 Use `lsblk` to list all the drives and their partitions.
 
 Now type `cfdisk /dev/<disk>` to open diskmgmt.
-    - Scroll to the free space. We need to create 3 partitions: boot, root and swap.
-    - The boot partition will of type `EFI System`, keep it to 800MB that will be sufficient.
-    - The root partition will of type `Linux File System`.
-    - The swap partition will of type `Swap`.
+- Scroll to the free space. We need to create 3 partitions: boot, root and swap.
+- The boot partition will of type `EFI System`, keep it to 800MB that will be sufficient.
+- The root partition will of type `Linux File System`.
+- The swap partition will of type `Swap`.
 
 We now need to format these partitions:
-    - `mkfs.fat -F32 /dev/<partition>` for the boot partition.
-    - `mkfs.ext4 /dev/<parition>` for the root partition.
-    - `mkswap /dev/<partition>` for the swap partition.
+- `mkfs.fat -F32 /dev/<partition>` for the boot partition.
+- `mkfs.ext4 /dev/<parition>` for the root partition.
+- `mkswap /dev/<partition>` for the swap partition.
 
 Now go ahead and mount these partitions:
-    - `mount /dev/<root partition> /mnt` to mount the root partition.
-    - Now create a boot directory in `/mnt` and mount the root partition, `mount /dev/<boot parition> /mnt/boot`.
-    - Enable swap using `swapon /dev/<swap parition>`.
+- `mount /dev/<root partition> /mnt` to mount the root partition.
+- Now create a boot directory in `/mnt` and mount the root partition, `mount /dev/<boot parition> /mnt/boot`.
+- Enable swap using `swapon /dev/<swap parition>`.
 
 Now its time to install linux to the root parition that is mounted on the `/mnt` using this command:
 `pacstrap -i /mnt base base-devel linux linux-firmware git sudo neofetch htop amdm-ucode nano vim bluez bluez-utils networkmanager`
@@ -98,11 +98,11 @@ Now turn on the system back again, boot into arch for now, we'll fix the windows
 Login to your user account.
 
 We will use `nmcli` to connect to wifi:
-    - `nmcli dev status` to see your networking devices.
-    - `nmcli radio wifi on` to turn on wifi.
-    - `nmcli dev wifi list` to see the list of networks.
-    - `sudo nmcli dev wifi connect <SSID> password <PASSWD>`
-    - `ping google.com` to check.
+- `nmcli dev status` to see your networking devices.
+- `nmcli radio wifi on` to turn on wifi.
+- `nmcli dev wifi list` to see the list of networks.
+- `sudo nmcli dev wifi connect <SSID> password <PASSWD>`
+- `ping google.com` to check.
 
 Update the full system: `sudo pacman -Syu`
 
@@ -133,9 +133,9 @@ Type: `nvidia-smi`
 First install `os-prober`: `sudo pacman -S os-prober`
 
 Then edit the grub-configuration file, `sudo nano /etc/default/grub`:
-    - change the default TIMEOUT to 20 seconds
-    - uncomment the last line (GRUB_DISABLE_OS_PROBER)
-    - save changes
+- change the default TIMEOUT to 20 seconds
+- uncomment the last line (GRUB_DISABLE_OS_PROBER)
+- save changes
 
 Now mount the windows `efi` partition and run this command: `sudo grub-mkconfig -o /boot/grub/grub.cfg`
 
@@ -146,19 +146,19 @@ Now if you reboot your system, you will see the option for windows 11 too.
 You can delete the root and swap partitions directly from `diskmgmt`, but to delete the efi partition we need to take a few extra steps.
 
 Open `cmd` in administrator mode.
-    - type `diskpart`
-    - type `list disk` to list all the disks
-    - type `select disk <number>`
-    - `list partition` to list all the partitions
-    - `select partition <number>`
-    - `delete partition override` NOTE: THIS IS A DESTRUCTIVE OPERATION
+- type `diskpart`
+- type `list disk` to list all the disks
+- type `select disk <number>`
+- `list partition` to list all the partitions
+- `select partition <number>`
+- `delete partition override` NOTE: THIS IS A DESTRUCTIVE OPERATION
 
 # Enabling Secure-Boot
 
 Enter set-up mode, this is done by resetting all the keys related to secure boot.
 Then install `sbctl` and reinstall grub with `tpm` module:
-    - `grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --modules="tpm" --disable-shim-lock`
-    - `sudo pacman -S sbctl`
+- `grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --modules="tpm" --disable-shim-lock`
+- `sudo pacman -S sbctl`
 
 Type `sbctl status` to see general status.
 Create your own custom secure boot keys using: `sbctl create-keys`
