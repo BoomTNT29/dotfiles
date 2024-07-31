@@ -167,3 +167,8 @@ Type `sbctl status` again to verify that the above steps were successful.
 Type `sbctl verify` to see what files need signing, the type `sbctl sign -s /path/to/file` for all those files.
 
 Reboot and enjoy!
+
+# Small Changes
+
+`timedatectl set-ntp true` - to synchronize time.
+`timedatectl set-local-rtc` - This will maintain the RTC in localtime, this way windows and linux will show the same time and not have conflicts.
