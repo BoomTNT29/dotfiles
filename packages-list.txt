@@ -34,3 +34,4 @@ iwconfig
 wireless_tools
 npm
 nm-connection-editor
+flameshot
