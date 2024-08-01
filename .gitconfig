@@ -1,6 +1,3 @@
-[user]
-	name = boom29
-	email = Gathik.Jindal@iiitb.ac.in
 [core]
 	autocrlf = true
 [alias]
@@ -9,5 +6,7 @@
 	br = branch
 	cm = commit
 [credential]
-	helper = cache
-	helper = cache
+	helper = store
+[user]
+	email = gathik.jindal@outlook.com
+	name = BoomTNT29

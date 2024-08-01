@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/krishna/Pictures/Wallpapers/deathnote_L_bnb.jpg' 
