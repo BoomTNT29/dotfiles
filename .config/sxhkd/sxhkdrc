@@ -5,3 +5,11 @@ super + shift + button4
 # Decrease brightness with Alt+Shift+Scroll Down
 super + shift + button5
 		~/Scripts/decrease_brightness.sh
+
+# Mute
+super + F1
+		pactl set-sink-volume @DEFAULT_SINK@ 0
+
+# Launch flameshot for screen clipping
+super + F6
+		flameshot gui &
