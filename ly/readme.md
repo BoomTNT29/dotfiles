@@ -19,12 +19,12 @@ WantedBy=multi-user.target
  2) Run the following commands then:
  ```bash
  sudo systemctl daemon-reload
- sudo systemctl enable update-splash.service
+ sudo systemctl enable <name>.service
  ```
 
  3) Incase you get an error in the second command, we can try running these commands to debug the error:
  ```bash
- sudo systemctl list-unit-files | grep update-splash
+ sudo systemctl list-unit-files | grep <name>
  ```
  
  4) Also check if there is a syntax error in the .service file which we created with this command:
