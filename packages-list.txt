@@ -27,7 +27,7 @@ unzip
 which
 xdg-utils
 xorg
-ttf-iosveka-nerd
+ttf-iosevka-nerd
 picom
 acpi
 iwconfig
