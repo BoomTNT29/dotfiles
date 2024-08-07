@@ -40,7 +40,7 @@ Now go ahead and mount these partitions:
 - Enable swap using `swapon /dev/<swap parition>`.
 
 Now its time to install linux to the root parition that is mounted on the `/mnt` using this command:
-`pacstrap -i /mnt base base-devel linux linux-firmware git sudo neofetch htop amdm-ucode nano vim bluez bluez-utils networkmanager`
+`pacstrap -i /mnt base base-devel linux linux-firmware git sudo neofetch htop amd-ucode nano vim bluez bluez-utils networkmanager`
 
 Now its time to generate a fstab (file system table). All the partitions are mounted on the live session of USB, but when we boot arch from the partition we need to tell the system to mount all these partitions from the same location:
 `genfsatb -u /mnt >> /mnt/etc/fstab`
