@@ -11,11 +11,11 @@ opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 
--- line wraps
+-- line wrap
 opt.wrap = true
 opt.linebreak = true
 
--- search settings
+--search settings
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-senstive
 
@@ -31,6 +31,3 @@ opt.backspace = "indent,eol,start"
 
 -- clipboard
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
-
-
-
