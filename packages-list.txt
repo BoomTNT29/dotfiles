@@ -5,7 +5,6 @@ brightnessctl
 discord
 brave-bin
 feh
-zathura
 grep
 i3
 kitty
@@ -18,7 +17,6 @@ pipewire-jack
 pipewire-pulse
 pipewire-session-manager
 sxhkd
-poppler
 ripgrep
 sbctl
 spotify-launcher
