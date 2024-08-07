@@ -43,7 +43,7 @@ Now its time to install linux to the root parition that is mounted on the `/mnt`
 `pacstrap -i /mnt base base-devel linux linux-firmware git sudo neofetch htop amd-ucode nano vim bluez bluez-utils networkmanager`
 
 Now its time to generate a fstab (file system table). All the partitions are mounted on the live session of USB, but when we boot arch from the partition we need to tell the system to mount all these partitions from the same location:
-`genfsatb -u /mnt >> /mnt/etc/fstab`
+`genfstan -U /mnt >> /mnt/etc/fstab`
 
 Now its time to chroot into our `/mnt`: `arch-chroot /mnt`
 
