@@ -34,3 +34,4 @@ npm
 nm-connection-editor
 flameshot
 xclip
+bluetuith
