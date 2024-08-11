@@ -35,3 +35,4 @@ nm-connection-editor
 flameshot
 xclip
 bluetuith
+dos2unix
