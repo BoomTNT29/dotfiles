@@ -36,3 +36,4 @@ flameshot
 xclip
 bluetuith
 dos2unix
+wmname
