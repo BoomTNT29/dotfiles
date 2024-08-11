@@ -2,8 +2,14 @@
 super + shift + button4
 		~/Scripts/increase_brightness.sh
 
+super + F8
+		~/Scripts/increase_brightness.sh
+
 # Decrease brightness with Alt+Shift+Scroll Down
 super + shift + button5
+		~/Scripts/decrease_brightness.sh
+
+super + F7
 		~/Scripts/decrease_brightness.sh
 
 # Mute
