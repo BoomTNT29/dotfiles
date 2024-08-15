@@ -67,7 +67,8 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ run_command, "%2s ", 	    "wifi_icon.sh" },
 	{ wifi_essid, "%s | ", 	    "wlp3s0" },
-	{ run_command, " %s | ",   "amixer sget PCM | tail -1 | awk '{print $5 }' | sed 's@\\(\\[\\|\\]\\)@@g'"},
+//	{ run_command, " %s | ",   "amixer sget PCM | tail -1 | awk '{print $5 }' | sed 's@\\(\\[\\|\\]\\)@@g'"},
+  { run_command, " %s | ", "pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume:/ {print $5}'" },
 	{ run_command, "%s | ",	    "battery_icon.sh" },
 	{ datetime, " %s",           "%d %b %g 󱑃 %T" },
 };
