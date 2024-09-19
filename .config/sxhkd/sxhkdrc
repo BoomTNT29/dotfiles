@@ -19,3 +19,7 @@ super + F1
 # Launch flameshot for screen clipping
 super + F6
 		flameshot gui &
+
+# Using touchpad on/off
+super + F10
+		~/Scripts/mouse_pad_off_on.sh
