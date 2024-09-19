@@ -23,3 +23,7 @@ super + F6
 # Using touchpad on/off
 super + F10
 		~/Scripts/mouse_pad_off_on.sh
+
+# Suspend / Sleep
+super + F11
+		systemctl suspend &
