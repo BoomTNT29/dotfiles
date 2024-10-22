@@ -45,3 +45,4 @@ noto-fonts-emoji
 noto-fonts-extra
 openssh
 xscreensaver
+i3lock
