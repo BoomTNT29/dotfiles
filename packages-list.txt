@@ -46,3 +46,4 @@ noto-fonts-extra
 openssh
 xscreensaver
 i3lock
+zenity

@@ -22,6 +22,11 @@ if ! pgrep -x "sxhkd" > /dev/null; then
     sxhkd &
 fi
 
+# Start xscreensaver
+if ! pgrep -x "xscreensaver" > /dev/null; then
+    xscreensaver --no-splash &
+fi
+
 # Set the background with feh
 ./.fehbg
 
