@@ -47,3 +47,4 @@ openssh
 xscreensaver
 i3lock
 zenity
+dunst
