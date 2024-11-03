@@ -114,6 +114,7 @@ set ignorecase true
 set icons true
 set number true
 set relativenumber true
+set sortby "natural"
 
 # Settings keybinds
 

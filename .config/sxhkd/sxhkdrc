@@ -27,3 +27,7 @@ super + F10
 # Suspend / Sleep
 super + F11
 		systemctl suspend &
+
+# Lock
+super + l
+		lock

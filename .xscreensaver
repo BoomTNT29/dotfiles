@@ -1,9 +1,9 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.09 for krishna on Sat Sep 28 05:49:23 2024.
+# Written by xscreensaver-settings 6.09 for krishna on Sun Sep 29 18:25:41 2024.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:03:00
-cycle:		0:01:00
+cycle:		0:30:00
 lock:		True
 lockTimeout:	0:03:00
 passwdTimeout:	0:00:30
@@ -26,18 +26,18 @@ dpmsOff:	0:20:00
 grabDesktopImages:  False
 grabVideoFrames:    False
 chooseRandomImages: True
-imageDirectory:	~/Pictures/Wallpapers/ScreenSaver/
+imageDirectory:	~/Pictures/Wallpapers/ScreenSaver/sunset/
 
 mode:		one
 selected:	143
 
-textMode:	date
+textMode:	program
 textLiteral:	XScreenSaver
 textFile:	
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 dialogTheme:	default
-settingsGeom:	0,23 1326,324
+settingsGeom:	0,23 938,211
 
 programs:								      \
 				maze --root				    \n\

@@ -8,3 +8,7 @@
 [user]
 	email = gathik.jindal@outlook.com
 	name = BoomTNT29
+[colour]
+	ui = auto
+[init]
+	defaultBranch = main

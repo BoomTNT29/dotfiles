@@ -4,8 +4,10 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export PATH=$PATH:~/Scripts
+# exporting important env variables
+export PATH=$PATH:~/Scripts:~/bin
 export EDITOR=nvim
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
 # Start slstatus
 if ! pgrep -x "slstatus" > /dev/null; then
@@ -25,6 +27,11 @@ fi
 # Start xscreensaver
 if ! pgrep -x "xscreensaver" > /dev/null; then
     xscreensaver --no-splash &
+fi
+
+# Start dunst (notification manager)
+if ! pgrep -x "dunst" > /dev/null; then
+    dunst &
 fi
 
 # Set the background with feh
