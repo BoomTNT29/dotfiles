@@ -20,6 +20,9 @@ super + F1
 super + F6
 		flameshot gui &
 
+super + 6
+		flameshot gui &
+
 # Using touchpad on/off
 super + F10
 		~/Scripts/mouse_pad_off_on.sh
