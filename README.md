@@ -172,3 +172,18 @@ Reboot and enjoy!
 
 `timedatectl set-ntp true` - to synchronize time.
 `timedatectl set-local-rtc` - This will maintain the RTC in localtime, this way windows and linux will show the same time and not have conflicts.
+
+# Errors
+
+## grub-rescue
+
+### cannot recognise any file system
+
+In such a case I would say to manually boot into linux using the system's boot menu, (in asus we press esc do enter it). Then after entering linux
+run the `grub-install` again and that mostly fixes all the errors one faces.
+
+To clear any confusion, as of now (8th Dec '24) the partitions are the following:
+
+1) nvme0n1p1: windows efi partition, contains windows boot
+2) nvme0n1p3: windows files
+3) nvme0n1p4: 
