@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 # Path to iwconfig and nmcli (install if not already installed)
 IWCONFIG_PATH=$(command -v iwconfig)

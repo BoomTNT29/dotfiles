@@ -1,7 +1,11 @@
 #!/bin/bash
 
-xinput --set-prop 12 342 1
+# Get the device ID for the touchpad
+device=$(xinput list --name-only | grep -i "touchpad")
+device_id=$(xinput list | grep "$device" | grep -oP 'id=\K\d+')
 
-# if that doesn't work use xinput to see all the devices
-# xinput list-props <device id> and then
-# xinput --set-prop <deviec id> <prop id> 1
+# Get the property ID for "Tapping Enabled"
+prop_id=$(xinput list-props "$device_id" | grep -i "Tapping Enabled (" | grep -oP '\(\K\d+')
+
+# Enable tapping
+xinput set-prop "$device_id" "$prop_id" 1

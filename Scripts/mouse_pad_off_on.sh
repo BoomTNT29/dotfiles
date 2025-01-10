@@ -6,7 +6,8 @@ device_id=$(xinput list | grep "$device" | grep -oP 'id=\K\d+')
 
 # Get the property ID for "Enabling it and Disabling it"
 prop_id=$(xinput list-props "$device_id" | grep -i "Device Enabled (" | grep -oP '\(\K\d+')
-prop_val=$(xinput list-props 12 | grep -i "Device Enabled (" | awk '{print $NF}')
+prop_val=$(xinput list-props "$device_id" | grep -i "Device Enabled" | grep -o [0-9]* | sed -n 2p)
+echo $prop_val
 prop_val=$((1 - prop_val))
 
 # Enable tapping
