@@ -30,3 +30,6 @@ static const char worddelimiters[] = " ";
 
 /* Size of the window border */
 static unsigned int border_width = 3;
+
+/* Password cover */
+static const char passwdCover = '*';
