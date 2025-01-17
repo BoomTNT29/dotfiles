@@ -41,14 +41,6 @@ map O $mimeopen --ask $f
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
-# cmd open &{{
-#     case $(file --mime-type -Lb $f) in
-#         text/*) lf -remote "send $id \$$EDITOR \$fx";;
-#         *) lf -remote "send $id xdg-open \$fx";;
-#     esac
-# }}
-
-
 cmd open &{{
     case $(file --mime-type -Lb $f) in
         text/*) lf -remote "send $id \$$EDITOR \$fx";;
@@ -69,7 +61,8 @@ map r push :rename<space>
 
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
+# cmd trash %set -f; mv -f $fx ~/.trash
+cmd trash %set -f; for f in $fx; do mv "$f" ~/.trash/$(date +%s)_$(basename "$f"); done
 
 # define a custom 'delete' command
 cmd delete ${{

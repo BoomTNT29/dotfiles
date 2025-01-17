@@ -1,0 +1,5 @@
+#!/bin/sh
+
+wallpaper=$(ls ~/Pictures/Wallpapers | dmenu -i -l 50 -g 1)
+
+[  $wallpaper -z ] || feh --bg-fill /home/krishna/Pictures/Wallpapers/$wallpaper
