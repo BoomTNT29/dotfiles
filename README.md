@@ -1,4 +1,4 @@
-# My Arch Linux Set Up
+# My Arch Linux Installation
 
 ## Installation
 
