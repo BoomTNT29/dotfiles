@@ -1,0 +1,2 @@
+1000 - volume notifications
+1001 - brightness notifications

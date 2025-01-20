@@ -2,23 +2,23 @@
 
 # Function to send notifications using dunst
 notify() {
-    dunstify -u "$1" "$2" "$3" # Usage: notify <urgency> <title> <message>
+    notify-send -u "$1" -t "$4" "$2" "$3" # Usage: notify <urgency> <title> <message> <time>
 }
 
 # List available Wi-Fi networks using nmcli and pass to dmenu
 wifi=$(nmcli -t -f SSID dev wifi list | dmenu -i -l 25 -g 2)
 
 # Exit if no Wi-Fi network was selected
-[ -z "$wifi" ] && { notify "normal" "Wi-Fi Connection" "No network selected."; exit 1; }
+[ -z "$wifi" ] && { notify "normal" "Wi-Fi Connection" "No network selected." 1000; exit 1; }
 
 # Get the sudo password from dmenu
 sudo_password=$(echo | dmenu -P -p "Enter sudo password: ")
 
 # Exit if no sudo password is entered
-[ -z "$sudo_password" ] && { notify "normal" "Wi-Fi Connection" "No sudo password entered."; exit 1; }
+[ -z "$sudo_password" ] && { notify "normal" "Wi-Fi Connection" "No sudo password entered." 1000; exit 1; }
 
 # Authenticate with sudo using the entered password
-echo "$sudo_password" | sudo -S echo > /dev/null 2>&1 || { notify "critical" "Wi-Fi Connection" "Invalid sudo password."; exit 1; }
+echo "$sudo_password" | sudo -S echo > /dev/null 2>&1 || { notify "critical" "Wi-Fi Connection" "Invalid sudo password." 10000; exit 1; }
 
 # Check whether password is required or not
 yn=$(echo | dmenu -p "Is password required (y\n): ")
@@ -26,9 +26,9 @@ yn=$(echo | dmenu -p "Is password required (y\n): ")
 if [[ "$yn" == "n" ]]; then 
 # Connect to the selected Wi-Fi network using nmcli
 if echo "$sudo_password" | sudo -S nmcli dev wifi connect "$wifi" > /dev/null 2>&1; then
-    notify "normal" "Wi-Fi Connection" "Connected to $wifi successfully!"
+    notify "normal" "Wi-Fi Connection" "Connected to $wifi successfully!" 1500
 else
-    notify "critical" "Wi-Fi Connection" "Failed to connect to $wifi."
+    notify "critical" "Wi-Fi Connection" "Failed to connect to $wifi." 2000
     exit 1
 fi
 
@@ -38,13 +38,13 @@ else
 wifi_password=$(echo | dmenu -p "Enter Wi-Fi password for $wifi: ")
 
 # Exit if no Wi-Fi password is entered
-[ -z "$wifi_password" ] && { notify "normal" "Wi-Fi Connection" "No Wi-Fi password entered."; exit 1; }
+[ -z "$wifi_password" ] && { notify "normal" "Wi-Fi Connection" "No Wi-Fi password entered." 1500; exit 1; }
 
 # Connect to the selected Wi-Fi network using nmcli
 if echo "$sudo_password" | sudo -S nmcli dev wifi connect "$wifi" password "$wifi_password" > /dev/null 2>&1; then
-    notify "normal" "Wi-Fi Connection" "Connected to $wifi successfully!"
+    notify "normal" "Wi-Fi Connection" "Connected to $wifi successfully!" 1500
 else
-    notify "critical" "Wi-Fi Connection" "Failed to connect to $wifi."
+    notify "critical" "Wi-Fi Connection" "Failed to connect to $wifi." 2000
     exit 1
 fi
 

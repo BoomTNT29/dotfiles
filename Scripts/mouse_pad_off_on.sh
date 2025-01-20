@@ -12,4 +12,4 @@ prop_val=$((1 - prop_val))
 
 # Enable tapping
 xinput set-prop "$device_id" "$prop_id" "$prop_val"
-echo "Device ID: $device_id, Property ID: $prop_id, Property Value: $prop_val"
+notify-send -u "low" -t 1000 -r 1002 "Touchpad" "Device ID: $device_id, Property ID: $prop_id, Property Value: $prop_val"

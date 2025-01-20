@@ -48,3 +48,4 @@ xscreensaver
 i3lock
 zenity
 dunst
+bc
