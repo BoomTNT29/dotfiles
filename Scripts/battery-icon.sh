@@ -1,5 +1,7 @@
 #!/bin/bash
 
+LOW_BATTERY=25
+
 # Path to acpi (install acpi if not already installed)
 ACPI_PATH=$(command -v acpi)
 
@@ -88,11 +90,15 @@ get_battery_icon() {
             echo -n "$ICON_THIRT"
         elif (( battery_percentage >= 20 )); then
             echo -n "$ICON_TWEN"
-	elif (( battery_percentage >= 10 )); then
-	    echo -n "$ICON_TEN"
+				elif (( battery_percentage >= 10 )); then
+					echo -n "$ICON_TEN"
         else
-            echo -n "$ICON_EMPTY"
+          echo -n "$ICON_EMPTY"
         fi
+
+				if (( battery_percentage <= LOW_BATTERY )); then
+					notify-send -u "critical" -t 0 -r 1003 -i "/home/krishna/.local/share/icons/dunst/battery-alert.png" "Low Baattery" "Please charge your laptop"
+				fi
     else
         echo -n "$ICON_UNKNOWN"
     fi

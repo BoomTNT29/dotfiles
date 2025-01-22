@@ -69,6 +69,6 @@ static const struct arg args[] = {
 	{ wifi_essid, "%s | ", 	    "wlp3s0" },
 //	{ run_command, " %s | ",   "amixer sget PCM | tail -1 | awk '{print $5 }' | sed 's@\\(\\[\\|\\]\\)@@g'"},
   { run_command, " %s | ", "pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume:/ {print $5}'" },
-	{ run_command, "%s | ",	    "battery_icon.sh" },
+	{ run_command, "%s | ",	    "battery-icon.sh" },
 	{ datetime, " %s",           "%d %b %g 󱑃 %T" },
 };

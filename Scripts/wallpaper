@@ -2,7 +2,7 @@
 
 # Function to send notifications using dunst
 notify() {
-    notify-send -u "$1" -t "$4" "$2" "$3" # Usage: notify <urgency> <title> <message> <time>
+    notify-send -u "$1" -t "$4" -i $5 "$2" "$3" # Usage: notify <urgency> <title> <message> <time>
 }
 
 wallpaper=$(ls ~/Pictures/Wallpapers | dmenu -i -l 50 -g 1)
@@ -11,5 +11,5 @@ if [ $wallpaper -z ]; then
 	notify "normal" "Wallpaper" "No wallpaper selected." 1500
 else
 	feh --bg-fill /home/krishna/Pictures/Wallpapers/$wallpaper
-	notify "normal" "Wallpaper" "Wallpaper successfully changed to $wallpaper." 1000
+	notify "normal" "Wallpaper" "Wallpaper successfully changed to $wallpaper." 1000 "/home/krishna/Pictures/Wallpapers/$wallpaper"
 fi
