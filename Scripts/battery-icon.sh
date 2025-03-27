@@ -96,7 +96,7 @@ get_battery_icon() {
           echo -n "$ICON_EMPTY"
         fi
 
-				if (( battery_percentage <= LOW_BATTERY )); then
+				if (( battery_percentage == LOW_BATTERY )); then
 					notify-send -u "critical" -t 0 -r 1003 -i "/home/krishna/.local/share/icons/dunst/battery-alert.png" "Low Baattery" "Please charge your laptop"
 				fi
     else

@@ -1,12 +1,12 @@
 # Increase brightness with Alt+Shift+Scroll Up
-super + shift + button4
+super + b
 		~/Scripts/increase_brightness.sh
 
 super + F8
 		~/Scripts/increase_brightness.sh
 
 # Decrease brightness with Alt+Shift+Scroll Down
-super + shift + button5
+super + shift + b
 		~/Scripts/decrease_brightness.sh
 
 super + F7
@@ -34,3 +34,14 @@ super + F11
 # Lock
 super + l
 		lock
+
+# Sound
+super + shift + button4
+		~/Scripts/increase_volume.sh
+
+super + shift + button5
+		~/Scripts/decrease_volume.sh
+
+# Monitor
+super + m
+		~/Scripts/monitor

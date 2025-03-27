@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Function to send notifications using dunst
+notify() {
+    notify-send -u "$1" -t "$4" "$2" "$3" # Usage: notify <urgency> <title> <message> <time>
+}
+
+# List available monitors using xrandr --listmonitors
+monitor=$(xrandr --query | awk '/ connected/ {print $1}' | dmenu -p "Select Monitor:")
+
+# Exit if no monitor is selected
+[ -z "$monitor" ] && { notify "normal" "Monitor Set Up" "No monitor selected." 1500; exit 1; }
+
+# Ask for direction
+position=$(echo -e "right-of\nleft-of\nabove\nbelow" | dmenu -p "Select Position:")
+
+# Exit if no direction is selected
+[ -z "$monitor" ] && { notify "normal" "Monitor Set Up" "No direction selected." 1500; exit 1; }
+
+# Get the primary monitor
+primary=$(xrandr -q | awk '/ connected/ {print $1}' | head -n 1)
+
+# Apply xrandr command
+xrandr --output "$monitor" --auto --"$position" "$primary"
+exec /home/krishna/.fehbg
+notify "normal" "Monitor Setup" "$selected_monitor positioned $position of $primary_monitor" 1500
