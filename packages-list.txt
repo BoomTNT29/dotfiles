@@ -49,3 +49,6 @@ i3lock
 zenity
 dunst
 bc
+mesa
+mesa-utils
+pkgfile
