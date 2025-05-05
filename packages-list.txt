@@ -52,3 +52,4 @@ bc
 mesa
 mesa-utils
 pkgfile
+btop
