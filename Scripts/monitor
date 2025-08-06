@@ -2,25 +2,60 @@
 
 # Function to send notifications using dunst
 notify() {
-    notify-send -u "$1" -t "$4" "$2" "$3" # Usage: notify <urgency> <title> <message> <time>
+    notify-send -u "$1" -t "$4" "$2" "$3"
 }
 
-# List available monitors using xrandr --listmonitors
+# List available monitors
 monitor=$(xrandr --query | awk '/ connected/ {print $1}' | dmenu -p "Select Monitor:")
 
-# Exit if no monitor is selected
 [ -z "$monitor" ] && { notify "normal" "Monitor Set Up" "No monitor selected." 1500; exit 1; }
 
-# Ask for direction
+# Ask for position
 position=$(echo -e "right-of\nleft-of\nabove\nbelow" | dmenu -p "Select Position:")
 
-# Exit if no direction is selected
-[ -z "$monitor" ] && { notify "normal" "Monitor Set Up" "No direction selected." 1500; exit 1; }
+[ -z "$position" ] && { notify "normal" "Monitor Set Up" "No direction selected." 1500; exit 1; }
 
-# Get the primary monitor
+# Get primary monitor
 primary=$(xrandr -q | awk '/ connected/ {print $1}' | head -n 1)
 
-# Apply xrandr command
-xrandr --output "$monitor" --auto --"$position" "$primary"
+# Get best resolution (by area) and highest refresh rate for selected monitor
+mode_line=$(xrandr | awk -v mon="$monitor" '
+    $1 == mon {in_monitor=1; next}
+    in_monitor && /^[^ ]/ {exit}
+    in_monitor && $1 ~ /^[0-9]+x[0-9]+$/ {
+        res = $1
+        split(res, dims, "x")
+        area = dims[1] * dims[2]
+        for (i = 2; i <= NF; i++) {
+            if ($i ~ /^[0-9.]+$/) {
+                fps = $i + 0
+                if (area > max_area || (area == max_area && fps > max_fps)) {
+                    max_area = area
+                    max_fps = fps
+                    best_res = res
+                    best_fps = fps
+                }
+            }
+        }
+    }
+    END {
+        if (best_res && best_fps)
+            print best_res, best_fps
+    }
+')
+
+read resolution refresh_rate <<< "$mode_line"
+
+if [ -z "$resolution" ] || [ -z "$refresh_rate" ]; then
+    notify "critical" "Monitor Setup" "Could not find best resolution/refresh rate for $monitor." 2000
+    exit 1
+fi
+
+# Apply with xrandr
+xrandr --output "$monitor" --mode "$resolution" --rate "$refresh_rate" --"$position" "$primary"
+
+# Restore wallpaper
 exec /home/krishna/.fehbg
-notify "normal" "Monitor Setup" "$selected_monitor positioned $position of $primary_monitor" 1500
+
+# Notify
+notify "normal" "Monitor Setup" "$monitor set to $resolution @ ${refresh_rate}Hz, positioned $position of $primary" 1500
