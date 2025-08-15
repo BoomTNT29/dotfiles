@@ -53,3 +53,4 @@ mesa
 mesa-utils
 pkgfile
 btop
+cuda
