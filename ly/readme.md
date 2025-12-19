@@ -6,7 +6,7 @@ To automatically change the splash text (remember?) / box title, I made a script
  ```
 [Unit]
 Description=Update LY Splash Text
-Before=ly.service
+Before=ly@tty2.service
 
 [Service]
 Type=oneshot

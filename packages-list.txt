@@ -54,3 +54,4 @@ mesa-utils
 pkgfile
 btop
 cuda
+pavucontrol
